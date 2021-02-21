@@ -1,0 +1,9 @@
+name: vlsworkflow
+dependencies:
+  - python
+  - django<1.12
+  - selenium<4
+  - pytest
+  - pip
+  - pip:
+    - black
