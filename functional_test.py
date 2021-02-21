@@ -16,9 +16,10 @@ class NewVisitorTest(unittest.TestCase):
         # She goes to check out its homepage.
         self.browser.get('http://localhost:8000')
 
-        # She notices the page title and header mentions to-do
-        self.assertIn('To-Do', self.browser.title)
-        header_text = self.browser.find_elements_by_tag_name('h1').text
+        # She notices the page title mentions webinar workflow and 
+        # the header mentions webinar to-do lists
+        self.assertIn('Webinar Workflow', self.browser.title)
+        header_text = self.browser.find_elements_by_tag_name('h1')[0].text
         self.assertIn('Webinar To-Do Lists', header_text)
 
         # She is invited to enter a to-do item straight away
@@ -39,7 +40,8 @@ class NewVisitorTest(unittest.TestCase):
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
-            any(row.text == '1: Schedule Zoom meeting' for row in rows)
+            any(row.text == '1: Schedule Zoom meeting' for row in rows),
+            "new to-do item did not appear in table"
         )
             
         # There is still a text box inviting her to add another item. She
