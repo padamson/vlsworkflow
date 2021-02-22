@@ -37,7 +37,7 @@ class NewVisitorTest(LiveServerTestCase):
         # the header mentions webinar to-do lists
         self.assertIn('Webinar Workflow', self.browser.title)
         header_text = self.browser.find_elements_by_tag_name('h1')[0].text
-        self.assertIn('Webinar To-Do Lists', header_text)
+        self.assertIn('Start a new webinar to-do list', header_text)
 
         # She is invited to enter a to-do item straight away
         inputbox = self.browser.find_element_by_id('id_new_item')
@@ -76,7 +76,7 @@ class NewVisitorTest(LiveServerTestCase):
 
         # She notices that the site has generated a unique URL for her
         kirsten_list_url = self.browser.current_url
-        self.assertRegex(kirsten_list_url, '/webinar/.+')
+        self.assertRegex(kirsten_list_url, '/webinars/.+')
         
         # Now a new user, Francis, comes along to the site.
         ## We use a new browser session to make sure that no information
